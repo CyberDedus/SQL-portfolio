@@ -53,6 +53,7 @@ WHERE
     AND OrderDetails.productID = Product.productID; 
 
 
+
 ### **B. INNER JOIN с явным указанием связи**  
 **Файл**: [b_inner_join.sql]  
 **Цель**: Улучшить читаемость запроса A через INNER JOIN.  
@@ -73,6 +74,8 @@ INNER JOIN
   OrderDetails ON Orders.orderID = OrderDetails.orderID  
 INNER JOIN  
   Product ON OrderDetails.productID = Product.productID;  
+
+
 
 ### **C. Классификация заказов через CASE**  
 **Файл**: [c_case_classification.sql]  
@@ -99,6 +102,7 @@ ORDER BY
 	OrderDetails.priceatorder * OrderDetails.quantity DESC  
 
 
+
 ### **D. Группировка и фильтрация через HAVING**  
 **Файл**: d_group_having.sql  
 **Цель**: Выявить популярные товары (заказанные > 1 раза).  
@@ -117,6 +121,7 @@ GROUP BY
 	Product.model  
 HAVING  
 	COUNT(OrderDetails.orderid)>1  
+
 
 
 ### **E. LEFT JOIN для включения всех заказов**  
@@ -139,6 +144,7 @@ LEFT JOIN
 	Customer ON Orders.customerid = Customer.customerid;  
 
 
+
 ### **F. Подзапрос для фильтрации по средней стоимости**  
 **Файл**: f_subquery_avg_cost.sql  
 **Цель**: Найти заказы дороже среднего.  
@@ -158,6 +164,7 @@ WHERE
 		SELECT AVG(od.priceatorder * od.quantity)  
 		FROM OrderDetails AS od  
 	);  
+
 
 
 ### **G. Создание представления (VIEW)**  
@@ -191,6 +198,7 @@ LEFT JOIN Customer
 
 SELECT*  
 FROM OrdersSummary  
+
 
 
 ### **H. Оконные функции для анализа временных рядов**  
