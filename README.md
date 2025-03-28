@@ -34,8 +34,9 @@ my_sql_project/
 **Файл**: [a_join_via_where.sql]  
 **Цель**: Получить данные из `Orders`, `Customers` и `Products` через неявное соединение.  
 **Навыки**:  
-- Соединение таблиц через `WHERE` и `=`.  
-
+- Соединение таблиц через `WHERE` и `=`.
+  
+```sql
 SELECT   
     Orders.orderID as "Идентификатор заказа",  
     Customer.fullName AS "ФИО клиента",  
@@ -51,7 +52,7 @@ WHERE
     Orders.customerID = Customer.customerID  
     AND OrderDetails.orderID = Orders.orderID  
     AND OrderDetails.productID = Product.productID; 
-
+```
 
 
 ### **B. INNER JOIN с явным указанием связи**  
