@@ -59,8 +59,9 @@ WHERE
 **Файл**: [b_inner_join.sql]  
 **Цель**: Улучшить читаемость запроса A через INNER JOIN.  
 **Навыки**:  
-- Явные соединения с ON.  
-
+- Явные соединения с ON.
+  
+```sql
 SELECT  
     Orders.orderID as "Идентификатор заказа",  
     Customer.fullName AS "ФИО клиента",  
@@ -75,7 +76,7 @@ INNER JOIN
   OrderDetails ON Orders.orderID = OrderDetails.orderID  
 INNER JOIN  
   Product ON OrderDetails.productID = Product.productID;  
-
+```
 
 
 ### **C. Классификация заказов через CASE**  
@@ -84,6 +85,7 @@ INNER JOIN
 **Навыки**:  
 - Условная логика с CASE.  
 
+```sql
 SELECT   
     Orders.orderID as "Идентификатор заказа",  
     Customer.fullName AS "ФИО клиента",  
@@ -101,7 +103,7 @@ INNER JOIN
 	OrderDetails ON OrderDetails.orderid = Orders.orderid  
 ORDER BY  
 	OrderDetails.priceatorder * OrderDetails.quantity DESC  
-
+```
 
 
 ### **D. Группировка и фильтрация через HAVING**  
@@ -110,6 +112,7 @@ ORDER BY
 **Навыки**:  
 - GROUP BY, агрегатные функции (COUNT, SUM), HAVING.  
 
+```sql
 SELECT  
 	Product.model,  
 	COUNT(OrderDetails.OrderId) AS "Количество заказов с данным товаром",   
@@ -122,7 +125,7 @@ GROUP BY
 	Product.model  
 HAVING  
 	COUNT(OrderDetails.orderid)>1  
-
+```
 
 
 ### **E. LEFT JOIN для включения всех заказов**  
@@ -131,6 +134,7 @@ HAVING
 **Навыки**:  
 - LEFT JOIN, работа с NULL.  
 
+```sql
 SELECT  
 	Orders.orderid AS "Идентификатор заказа",   
 	Customer.fullName AS "ФИО клиента",  
@@ -143,7 +147,7 @@ LEFT JOIN
 	Review ON Orders.orderid = Review.orderID  
 LEFT JOIN  
 	Customer ON Orders.customerid = Customer.customerid;  
-
+```
 
 
 ### **F. Подзапрос для фильтрации по средней стоимости**  
@@ -152,6 +156,7 @@ LEFT JOIN
 **Навыки**:  
 - Вложенные подзапросы, WHERE с подзапросом.  
 
+```sql
 SELECT  
 	o.orderID as "Идеинтификатор заказа",  
   	o.customerID as "Идентификатор клиента",  
@@ -165,7 +170,7 @@ WHERE
 		SELECT AVG(od.priceatorder * od.quantity)  
 		FROM OrderDetails AS od  
 	);  
-
+```
 
 
 ### **G. Создание представления (VIEW)**  
@@ -174,6 +179,7 @@ WHERE
 **Навыки**:  
 - Создание VIEW, комбинирование JOIN.  
 
+```sql
 DROP VIEW IF EXISTS OrdersSummary; -- Удаляем представление, если оно существует  
 CREATE VIEW OrdersSummary AS  
 SELECT  
@@ -199,7 +205,7 @@ LEFT JOIN Customer
 
 SELECT*  
 FROM OrdersSummary  
-
+```
 
 
 ### **H. Оконные функции для анализа временных рядов**  
@@ -208,6 +214,7 @@ FROM OrdersSummary
 **Навыки**:  
 - Оконные функции (SUM() OVER), временные интервалы (DATE_TRUNC).  
 
+```sql
 SELECT  
     "Месяц",  
     SUM(monthly_revenue) OVER (ORDER BY "Месяц") AS "Накопленная выручка"  
@@ -220,7 +227,7 @@ FROM (
     GROUP BY DATE_TRUNC('month', o.orderdate)  
 ) AS monthly_data  
 ORDER BY "Месяц";  
-  
+```  
 
 ---
 
