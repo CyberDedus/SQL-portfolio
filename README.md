@@ -37,11 +37,11 @@ my_sql_project/
 - Соединение таблиц через `WHERE` и `=`.  
 
 SELECT   
-    		Orders.orderID as "Идентификатор заказа",  
-     		Customer.fullName AS "ФИО клиента",  
-    	Product.model AS "Модель товара",  
-   	 OrderDetails.quantity as "Количество",  
-    	OrderDetails.priceatorder * OrderDetails.quantity as "Стоимость"  
+    Orders.orderID as "Идентификатор заказа",  
+    Customer.fullName AS "ФИО клиента",  
+    Product.model AS "Модель товара",  
+    OrderDetails.quantity as "Количество",  
+    OrderDetails.priceatorder * OrderDetails.quantity as "Стоимость"  
 FROM  
     Orders,  
     Customer,  
